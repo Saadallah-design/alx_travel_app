@@ -1,1 +1,37 @@
-.env 
+# Virtual environment
+venv/
+ENV/
+env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django migrations (optional: keep only __init__.py)
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/__pycache__/
+# Uncomment the next line if you want to ignore all migrations
+# */migrations/
+
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+db.sqlite3
+media/
+staticfiles/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# MacOS
+.DS_Store
+
+# Environment files
+.env

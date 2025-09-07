@@ -1,8 +1,6 @@
-# Django settings for alx_travel_app project.
-# alx_travel_app/alx_travel_app/settings.py
-
 # Standard library
 from pathlib import Path
+import os
 
 # Third-party libraries
 import environ
@@ -10,25 +8,25 @@ import pymysql
 
 # Configure PyMySQL to act as MySQLdb
 pymysql.install_as_MySQLdb()
-# This allows Django to use PyMySQL as the MySQL database adapter.
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Initialize environment variables
-env = environ.Env(DEBUG=(bool, False))
+env = environ.Env(
+    DEBUG=(bool, False),
+    SECRET_KEY=(str, 'replace-me')  # default if .env not found
+)
+
+# Load .env file if it exists
 env_file = BASE_DIR / '.env'
 if env_file.exists():
     env.read_env(str(env_file))
-# Checks if .env exists. 
-# Reads .env only if the file exists.
-# Safer for production if .env is optional.
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY', default='replace-me')
+# SECRET_KEY
+SECRET_KEY = env('SECRET_KEY')  # uses default 'replace-me' if not set
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])

@@ -35,3 +35,9 @@ staticfiles/
 
 # Environment files
 .env
+
+# Documentation (internal notes)
+docs/
+
+# Project overview (temporary)
+README_OVERVIEW.md
